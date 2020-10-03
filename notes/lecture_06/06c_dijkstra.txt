@@ -1,0 +1,34 @@
+Dijkstra's Algorithm
+------------------------------------
+
+Idea:
+- maintain a set of vertices for which we have the distances to S (starting vertex)
+- store an upper bound on distances for other vertices
+- to decide what vert to add to set of verts with known distances, use GREEDY RULE: take new vert closest to S
+
+
+------------------------------------
+Dijkstra's Algorithm
+------------------------------------
+
+Dijkstra(G, w, s): // graph G, weights W, starting vert S
+    
+    // d stores dist btw S and other verts
+    // pr stores parent info for search tree
+    Let d[s] = 0 and pr[s] = null
+
+    for all v in V with v != s:
+        let d[s] = infinity // only upper bound we can give
+    
+    mark all verts as unexplored
+
+    repeat:
+        let u be unexpored vert with SMALLEST d[u]
+        for each neighbor v of u:
+            if d[u] + w_uv < d[v]:
+                let d[v] = d[u] + w_uv
+                let pr[v] = u;
+            endif
+        endfor
+        mark u as explored
+    until all vertices explored

@@ -1,0 +1,48 @@
+Greedy Algorithms
+------------------------------------
+
+Basic Idea: 
+- make a sequence of small choices that are locally optimal
+- doing something that's locally optimal does not necessarily give a globally optimal solution (but it might)
+- can be not easy to analyze
+
+Ex) Making Change
+
+Statements:
+- Fix coin denominations c1, c2, ... , cn 
+    - n different kinds of coins
+    - integers of how many cents each kind is worth
+
+Problem:
+Given a value V you would like to make a change for, find a way to make up V using as few coins as possible.
+(Write V = Ci1 + Ci2 + ... + Cik, where k is minimal)
+
+Tip:
+- natural way to solve: be greedy with the size of coin
+
+------------------------------------
+A Greedy Solution:
+------------------------------------
+
+Change(v): // recursive!
+    if v = 0: return
+    else:
+        let c be largest coin of value <= v
+        add c to list of coins
+        Change(v - c) // make change for remaining value
+    endif
+
+But was that the most optimal? It's not obvious.
+- Can depend on the currency system
+    Ex) c1 = 1 is the only coin // solution = all pennies
+    Ex) c1 = 1, c2 = 2 // still optimal
+
+NO. This greedy algorithm is not necessarily optimal.
+What is an example?
+    V = 8
+    c1 = 1
+    c2 = 4
+    c3 = 5
+
+    Biggest first:      8 = 5 + 1 + 1 + 1
+    Not biggest first:  8 = 4 + 4

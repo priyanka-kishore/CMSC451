@@ -1,0 +1,16 @@
+Shortest Paths in Weighted Graphs
+------------------------------------
+
+BFS can find shortest paths in unweighted graphs.
+What if there's a weight w_uv >= 0 for each edge (u, v) in E?
+
+One idea:
+1)  make edges longer
+    
+    u ---(3)--- v   =>   u -- x -- x -- v added imtermediates
+    
+    - increases input size (esp. with highly weighted edges)
+        - thus greater running time
+    - messy for non-integer weights
+
+2) Greedy algo: Dijkstra's! (next note)

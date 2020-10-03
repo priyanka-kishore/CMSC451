@@ -1,0 +1,61 @@
+Correctness of Dijkstra's Algorithm
+------------------------------------
+
+Proving that it's correct
+aka, when it's done,
+it actually computes distances from initial vert s
+to all other verts in graph.
+
+[ LEMMA ]
+When a vert v is explored, d[v] is distance from s to v.
+
+PROOF: By induction on # of explored vertices.
+
+1) Base Case:
+    This clearly holds when s is the only explored vertex.
+
+2) Induction Hypothesis:
+    Suppose the lemma holds when there are k explored verts.
+
+3) Induction Step:
+    (Want to show claim holds when there are k+1 verts)
+    
+    Let v be (k + 1)st explored vert.
+    Suppose u = pr[v], u is parent of v.
+
+    (What can we say about shortest paths?)
+    By the induction hypothesis, u is on shortest path to s. 
+
+    (Show shortest path from s -> v is through u)
+    Suppose (for a contradiction) that the shortest path from s to v does not go through u;
+    Let x be the last explored vert on this path.
+    Let y be its unexplored neighbor on this path.
+
+          d[x]          w_xy
+      _--(path)----> x -----> y --(path)--_
+     /                                     \
+    S ----(path)-----> u -----------------> v
+           d[u]                 w_uv
+
+    explored = s, x, u
+    Remember: we're interested in shortest path from s to v.
+
+    We have:
+    dist(s,v) < d[v] 
+        // (dist(s,v) doesn't go through u, because we just assumed there's a shorter path)  
+    <= d[y]
+        // length of path s to y found by algo
+        // algo chose to add v before y 
+    <= dist(s,v) 
+        // bc y is on SHORTEST path from s to v
+
+    This says dist(s,v) < dist(s,v), a CONTRADICTION!
+    So in fact, the shortest path from s to v must go through u, and dist(s,v) = d[u] + w_uv = d[v].
+
+    [x].
+
+
+
+General strategy for proving correctness of greedy algos:
+- show that greedy algorithm stays ahead
+- show every greedy choice the algo makes is the best possible choice

@@ -1,0 +1,23 @@
+Running Time of Dijkstra's Algorithm
+------------------------------------
+
+If each step took O(1),
+then O(m + n) by same analysis as BFS/DFS.
+-  algo eventually runs over all verts of graph
+
+BUT: what is cost of finding u with smallest d[u]?
+(this is a step in our algorithm)
+
+This can be done efficiently with a PRIORITY QUEUE.
+    - each element has a priority
+    - elements come out in order of priority
+Costs: 
+    O(n) to build
+        - but we already have some things we need to do up front that take linear time, so it's additive, no big deal
+    O(log n) to remove element with smallest key
+    O(log n) to decrease element's key
+        - like with updating d[u]
+
+Thus:
+running time -> O((m + n) log n)
+- very efficient

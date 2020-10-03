@@ -1,0 +1,26 @@
+Minimum Spanning Trees
+------------------------------------
+
+BFS, DFS can be used to find spanning trees.
+
+For MSTs, suppose edges have weights and we want to minimize total weight.
+
+Why?
+- maybe we want a connect network with costs, but minimize cost between all nodes
+
+Ex)
+        3
+    a ------ b -_ 7
+    |        |   \  
+  2 |      1 |    c
+    |        |   /
+    e ------ d _- 2
+        3
+
+    MST of cost = 8:
+    ae, de, bd, cd
+
+    MST of cost = 8:
+    ae, ab, bd, cd
+
+THUS: MST of a graph does not have to be unique.
