@@ -1,0 +1,32 @@
+Earliest-Finishing Activity First - Interval Scheduling
+------------------------------------
+- most optimal approach
+- greedy
+
+Pseudocode:
+------------------------------------
+
+// s = array of starting times
+// f = array of finishing times
+GreedyIntervalScheduling(s, f): 
+    Sort tasks by increasing order of the finishing times.
+    Let A be an empty set.
+    Let f_prev = -infinity.
+
+    for i = 1 to n:
+        if s_i > f_prev: // starting time after last finishing time
+            add task_i to A
+            f_prev = f_i // new latest finishing interval
+        endif
+    endfor
+
+
+Why is this correct?
+    - schedule with no conflicts
+    - schedule with as many tasks/intervals as possible
+------------------------------------
+
+No conflicts: only schedule tasks that start after the last finished task.
+
+Schedule is optimal: "stays ahead" of any other solution
+    - can also give an "exchange argument" = show can transform any optimal solution into greedy one and keep it at least as good and thus, greedy soln is optimal soln

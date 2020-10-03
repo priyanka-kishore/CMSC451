@@ -1,0 +1,37 @@
+Greedy Algorithms for Scheduling
+------------------------------------
+- find a schedule that's as good as possible by some parameters
+
+
+
+INTERVAL SCHEDULING
+------------------------------------
+Given n requests with starting times s_i, and finishing times f_i for i in {1, 2, ..., n}.
+A subset of request is COMPATIBLE if no two overlap.
+
+Problem: find a largest possible compatible subset.
+
+Ex) input = two arrays of numbers of s_i and t_i
+
+Given these time bar intervals, schedule largest possible non-overlapping intervals.
+[1      ]
+  [2  ]
+    [3         ]
+        [4               ]
+            [5   ]
+                   [6  ]
+
+Can schedule:
+{1, 5, 6}
+{2, 5, 6}
+
+
+GREEDY STRATEGY?
+- earliest activity first
+    - suboptimal! earliest activity could be really long and within it, have many smaller intervals
+- shortest activity first
+    - suboptimal! short interval could overlap two longer intervals
+- lowest-conflict activity first
+    - more complicated, but still suboptimal
+- earliest-finishing activity first
+    - OPTIMAL!

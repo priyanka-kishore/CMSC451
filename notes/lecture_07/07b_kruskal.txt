@@ -1,0 +1,26 @@
+Kruskal's Algorithm
+------------------------------------
+
+Greedy rule: Add the lowest-weight edge that doesn't create a cycle (repeat until have ST).
+
+
+Proof (that output is spanning tree):
+------
+Suppose the algorithm adds edge e = {u,v} to the forest F.
+
+Consider the cut induced by the component of u in F.
+// aka everything that can be reached by u is a component of u and will be the A part of the cut; B will be everything else
+
+Vertex v is on the other side of the cut since adding e doesn't create a cycle (according to greedy rule).
+// when e is added to F, no cycle is created bc before adding the edge e, there was no path from u to v
+
+By the greedy rule, e is the min-weight edge crossing the cut.
+
+So by the lemma, every MST must contain e.
+
+It remains to show that the output is a spanning tree.
+Clearly it never creates a cycle.
+If the graph were not connected, there would be an edge it could add without creating a cycle, so it would be finished.
+Thus, the final output is a spanning tree.
+
+[x].

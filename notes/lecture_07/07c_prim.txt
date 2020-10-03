@@ -1,0 +1,24 @@
+Prim's Algorithm
+------------------------------------
+- Finding MST of weighted graph.
+- Prove with same lemma as Kruskal's which shows that every edge added by the algo has to be in any MST.
+
+Greedy Rule: Choose any root and grow a tree by adding the non-tree vertex with lowest attachment cost.
+
+THEOREM:
+------------------------------------
+Prim's algorithm outputs an MST.
+
+Proof:
+------
+Suppose the algo adds edge e = {u,v} to forest F.
+
+Consider the cut induced by the component of the root in F.
+
+Clearly, e crosses this cut, and by the greedy rule, it's the min-weight edge with this property.
+
+So by the lemma, every MST contains e.
+
+Clearly, the algo outputs a spanning tree since as long as F is not connected (as long as there are some vertices not yet attached to growing tree), we can add some edge and not create a cycle.
+
+[x].

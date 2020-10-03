@@ -1,0 +1,42 @@
+Algos for Finding Minimum Spanning Trees
+------------------------------------
+- greedy ones
+
+GENERIC STRATEGY: repeatedly add edges until we have an MST
+
+
+Definitions:
+* CUT = a bipartition of the vertices (V = A U B, A intersect B = null)
+
+* NONTRIVIAL CUT = if A,B of cut (A,B) are both nonempty
+
+* edge CROSSES a cut if it has one vert on each side
+
+
+LEMMA:
+------------------------------------
+Assume all edge weights are distinct.
+Let (A,B) be a nontrivial cut, and let e be the minimum weight edge crossing that cut.
+Then every MST must contain e. // the claim
+// useful tool for showing that MST algos are correct
+
+Proof:
+------
+Let T' be a spanning tree that do
+es not contain e = {u, v}.
+// Exchange argument = transform spanning tree to contain e
+
+Since T' is a spanning tree, there is a (unique) path from u to v (by definition of spanning tree).
+
+Since u,v are on opposite sides of the cut, there must be some edge e' on the path that crosses the cut.
+
+// Let's use the edge e' to construct a new ST.
+Let T be the graph obtained from T' by deleting e' and adding e.
+
+T is a spanning tree (still connected and has name number of edges).
+
+Since e is the min-weight edge crossing the cut, cost(e) < cost(e'); All other edges are the same, so the total weight of T is lower.
+
+// ESSENTIALLY, if there's an edge of an ST that crosses the cut that isn't the min-weight edge, it can be transformed nto one.
+
+[X].

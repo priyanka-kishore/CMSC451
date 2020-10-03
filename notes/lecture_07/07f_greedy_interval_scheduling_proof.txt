@@ -1,0 +1,34 @@
+Proof of Optimal Greedy Interval Scheduling Problem
+------------------------------------
+
+Theorem: GreedyIntervalScheduling outputs an optimal solution.
+
+Proof:
+------
+Let G = (g1, ... , gk) be the greedy schedule (indices ordered by increasing finish time).
+
+// we want to take an optimal schedule and transform it into the greedy one to show that the greedy one is still optimal
+Let B = (b1, ... , bl) be an optimal schedule (so l >= k // bc l is as large as possible).
+// we want to show l == k
+
+// transform schedule
+Let j be first index where schedules differ:
+    G = (g_1, ... , g_j-1, g_j, ... , g_k)
+    B = (g_1, ... , g_j-1, b_j, ... , b_l)
+
+By the greedy rule, finish(g_j) <= finish(b_j) (by the greedy algo)
+// meaning if we change B, b will still be optimal
+
+So if we switch B to alternative
+    B' = (g_1, ... , g_j-1, g_j, b_j+1..., b_l)
+    // replace b_j with g_j since finish(g_j) <= finish(b_j)
+Then it is still a valid schedule (no conflicts introduced) and just as long (l intervals). 
+// solution is not any worse
+
+Repeating this process, we can ensure that the first k intervals in the optimal schedule agree with the greedy ones.
+
+// okay, so first k intervals are same, but what if l becomes > k ?
+If l > k, then b_k+1 is an interval that the greedy algorithm could have scheduled without a conflict.
+But the greedy algo stopped with g_k, so we must have l = k.
+
+[x].
