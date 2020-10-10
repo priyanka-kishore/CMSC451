@@ -1,0 +1,23 @@
+Interval Partitioning Proof
+------------------------------------
+- proving algorithm is correct
+    - use smallest number of colors
+
+
+THEOREM
+------------------------------------
+GreedyIntervalPartition assigns a color from {1, 2, ... , depth} to all intervals and no two intervals are assigned the same color.
+
+Proof:
+------
+// 1. never assign two overlapping intervals the same color
+
+Whenever we assign a color, it's different from the colors of all overlapping intervals scheduled so far, so we never assign the same color to overlapping intervals.
+
+// 2. why does it suffice to use the depth number of colors
+
+To show that the # colors <= depth, it suffices to show that we never exclude all the colors.
+Suppose when considering interval i, it overlaps t previous intervals.
+Then there exists (t + 1) overlapping intervals, so depth >= t + 1.
+=> t <= depth - 1, so there is always a color from {1, ... , depth} available. 
+// aka if the # colors used is just depth, the # prev intervals is depth - 1, a color always available

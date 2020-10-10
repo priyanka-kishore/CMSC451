@@ -1,0 +1,56 @@
+Interval Partitioning
+------------------------------------
+- another scheduling problem
+
+Schedule ALL intervals using as few resources as possible.
+
+Ex)
+
+    [======]    [===]
+    [==]  [=========]
+    [===]    [======]
+       [====]
+
+    Question: how many parts can we divide these intervals into that are non-overlapping and minimizing the number of parts?
+
+    Can partition into minimum of 3 groups:
+    [oooooo]    [xxx]
+    [xx]  [---------]
+    [---]    [oooooo]
+       [xxxx]
+
+    To verify that this is optimal, show that we can partition into fewer than 3 groups:
+    - there are times at which we need 3 classrooms (slicing through a time shows need at least 3 resources available at one time) = "depth"
+    - ^ general way of showing some kind of LOWER BOUND
+
+
+DEFINITIONS:
+* the "DEPTH" of a set intervals = max over all t |{i in {1, ... , n} such that t in [s_i, f_i]}|
+    - ie: the largest number of intervals that include some particular time.
+
+THUS:
+Clearly, the number of resources is AT LEAST the depth (lower bound).
+
+We'll achieve this through a GREEDY STRATEGY:
+------------------------------------
+- go through intervals in order of start time
+- assign each to any available resources
+
+// s = array of starting times
+// f = array of finishing times
+GreedyIntervalPartition(s, f):
+    Sort all intervals by their starting times.
+
+    for i = 1 to n: // iterating through all intervals
+        Let E = null (empty set) // excluded colors / groups?
+
+        for j = 1 to i-1: // iterating through previous intervals (already scheduled)
+            If [s_j, f_j] overlaps [s_i, f_i]: add color[j] to E // prev interval is an excluded color
+        endfor
+
+        Let color[i] be the smallest positive integer not in E.
+        // color[i] means assign ith interval to some resource
+    endfor
+
+    // assigned colors to all of the intervals
+    // claim = gives valid partition

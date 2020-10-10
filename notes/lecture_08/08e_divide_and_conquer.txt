@@ -1,0 +1,31 @@
+Divide and Conquer
+------------------------------------
+Main idea: 
+- divide into smaller problems
+- solve them
+- merge the solutions
+
+Can:
+- improve brute force solutions in polynomial time to better polynomial time
+
+
+
+--------------
+Ex: Merge Sort
+--------------
+To sort a list of length n:
+- divide into 2 halves, sort each (recursively)
+- merge lists in O(n)
+
+    Running Time Analysis:
+    ----------------------
+    Let T(n) = running time on lists of length n.
+    T(n) = 2*T(n/2) + O(n) = recursively sort 2 lists + merge them
+    and T(1) = O(1) = constant time.
+
+    => T(n) = O(nlogn) // grows like O(nlogn)
+
+
+
+
+* See KT Section 5.3 for a variant of this algorithm.

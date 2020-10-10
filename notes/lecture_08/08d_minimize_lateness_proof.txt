@@ -1,0 +1,56 @@
+Scheduling to Minimize Lateness - Proof
+------------------------------------
+- scheduling tasks in order of increasing deadline
+- proof by exchange argument
+
+DEFINITION:
+* a schedule has an "INVERSION" if job i comes before job j, but deadlines d_i > d_j.
+
+- in our greedy algo, no inversions
+    - scheduling by INCREASING deadline
+- anything out of order = an INVERSION
+
+
+LEMMA
+------------------------------------
+All schedules with no inversions (and no idle time) have the same maximum lateness.
+
+Proof:
+------
+The only flexibility in such a schedule (with no inversions) is in the order of jobs with the same deadline.
+Any such jobs must be scheduled consecutively.
+The finishing time of the last job in the block (of all jobs that have the same deadline) doesn't depend on the order.
+
+[x]
+
+
+LEMMA
+------------------------------------
+There is an optimal schedule with no inversions (and no idle time).
+
+Proof:
+------
+By exchange argument. We show how to convert an optimal schedule with inversions into one with none.
+
+If there's an inversion, there must be jobs i,j (with i before j) that are adjacent and have d_i >  d_j.
+
+We claim that swapping jobs i & j gives a schedule with one less inversion and no worse lateness.
+
+        |       |     [i            ][j   ]
+        d_j     d_i   s_i        f_i=s_j  f_j
+        <----------- lateness ------------>
+        - before swap, lateness if f_j - d_j
+
+        |       |     [j   ][i            ]
+        d_j     d_i   s_i  s_i+t_j       f_j
+                         = s_i + f_j - s_j
+        - after swap, lateness is
+            l = max(f_j - d_i, s_i + f_j - s+j - d_j)
+                                ^ = f_j - d_j - (s_j - s_i)
+                                                 ^ = positive
+    Therefore, l <= f_j - d_j since d_i > = d_j and s_j >= s_i.
+    - Lateness can only go down from the value it had before swap. Performing swap can't make things worse.
+
+    Repeat until get a scedule with no inveresions, without making the lateness worse.
+
+By the previous lemma, this optimal schedule has the same lateness as the greedy one.

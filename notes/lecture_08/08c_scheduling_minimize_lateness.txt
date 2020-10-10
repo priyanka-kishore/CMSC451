@@ -1,0 +1,41 @@
+Scheduling to Minimize Lateness
+------------------------------------
+- previous scheduling problems: 
+    - interval scheduling: one resource available, schedule as many tasks into it as possible
+    - interval partitioning: unlimited resources available, use as few of them as possible to schedule all tasks
+- this scheduling problem: limited resources (or one), schedule ALL tasks
+
+
+SETTING:
+------------------------------------
+
+- each task has a duration t_i (amount of time task i takes) and a deadline d_i (time by which task must finish)
+    // may not be possible to schedule all tasks by their deadlines
+- if we schedule task i for interval [s_i, f_i] with f_i = s_i + t_i, define the LATENESS of task i as l_i = max(0, f_i - d_i)
+    // f_i - d_i is how long after deadline task is finished (lateness)
+    // any task with finished by deadline has LATENESS 0
+
+
+GOAL: schedule to minimize the maximum overall tasks of l_i (worst-case lateness)
+    // want task that is the most late to have its lateness as small as possible
+
+
+Greedy in solving this problem?
+- no reason to leave a task hanging
+- only question is how to order the tasks
+
+
+Possible Greedy Strategies
+------------------------------------
+1) schedule in order of increasing duration t_i
+    - do short tasks first
+    - ex:   t1 = 1, d1 = 100 (short task, late deadline)
+            t2 = 10, d2 = 10 (long task, early deadline)
+        - doing longer task first gives lateness = 0
+        - doing short task first make task2 late
+    - not optimal
+2) schedule in order of increasing "slack", d_i - t_i
+    - the more flexibility/time remaining if scheduling task now, the better
+    - not optimal
+3) schedule in order increasing deadline d_i
+    - optimal!
