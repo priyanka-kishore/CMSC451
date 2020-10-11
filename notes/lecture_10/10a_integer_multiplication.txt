@@ -1,0 +1,27 @@
+Integer Multiplication
+----------------------------------
+- divide and conquer
+- does not have merge sort framework
+- another recurrence
+
+GOAL: 
+multiply two n-digit integers
+
+Grade School Algo:
+multiply digit-by-digit and adds
+
+        1 2 3
+    x     4 5
+    ---------
+        6 1 5
+    + 4 9 2 x
+    ---------
+        5 5 3 5
+
+To compute a x b,
+write b = sum(b_j * 10^j) from j=0 to n-1
+so that a x b = sum)(a*b_j*10^j) from j=0 to n-1.
+    - (a*b_j) can be computed in O(n) time
+
+Overall running time = O(n^2)
+    - sum a linear # of terms, each term takes linear time to evaluate

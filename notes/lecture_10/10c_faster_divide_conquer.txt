@@ -1,0 +1,31 @@
+Faster Divide-and-Conquer for Integer Multiplication
+----------------------------------------------------
+
+Previously...
+a x b = (α_1*β_1*10^n) + (α_1*β_0 + α_0*β_1)*10^(n/2) + α_0*β_0
+- The 4 multiplications made naive approach quadratic
+
+
+Simple trick to reduce multiplication in middle term:
+-----------------------------------------------------
+(α_0*α_1)*(β_0*β_1) 
+= α_0*β_0 + α_0*β_1 + α_1*β_0 + α_1*β_1
+    -------                       -------
+    same as last term             same as first term
+
+If we compute this and α_1*β_1 and α_0*β_0,
+we can compute:
+    (α_0*α_1)*(β_0*β_1) - α_0*β_0 - α_1*β_1
+    = α_0*β_1 + α_1*β_0
+
+Only THREE multiplications.
+(And some additions, but this is constant.)
+
+=> suffices to do 3 multiplications + O(1) additions
+
+
+Running Time:
+-------------
+T(n) <= 3T(n/2) + O(n)
+T(n) <= O(n^(log2(3))) = O(n^1.59)
+"KARATSUBA MULTIPLICATION"

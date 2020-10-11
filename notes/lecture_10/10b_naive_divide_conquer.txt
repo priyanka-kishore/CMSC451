@@ -1,0 +1,27 @@
+Naive Divide-and-Conquer Approach to Integer Multiplication
+-----------------------------------------------------------
+a x b = ?
+
+Write:
+    a = α_1*10^(n/2) + α_0
+        α_0 (MSD), α_1 (LSD) are n/2-digit integers
+    b = β_1*10^(n/2) + β_0
+
+    // breaking numbers into digits makes them easier to deal with
+    
+Then:
+    a x b 
+        = (α_1*10^(n/2) + α_0)*(β_1*10^(n/2) + β_0)
+        = (α_1*β_1*10^n) + (α_1*β_0 + α_0*β_1)*10^(n/2) + α_0*β_0
+
+    - 4 multiplications of n/2-digit integer
+    - O(1) additions of O(n)-digit integers
+
+Running time: T(n) <= 4T(n/2) + O(n)
+
+Proposition
+-----------
+For any q > 2, the recurrence T(n) <= qT(n/2) + O(n) has the solution T(n) <= 0(n^(log2(q)))
+
+=> Above algorithm has complexity O(n^(log2(4))) = O(n^2)
+    // same as before!!
