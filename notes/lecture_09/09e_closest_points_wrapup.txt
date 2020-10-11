@@ -1,0 +1,16 @@
+Closest Points Wrap-Up
+------------------------------------
+- algorithm description (pseudocode in book)
+- correctness + running time
+
+
+Using sorted lists of P by x- and y-coord, we can compue corresponding sorted lists of Q and R in time O(n), then find the points in the strip S, and sort them by y-coord. All in time O(n).
+
+The merge step therefore takes time O(n).
+    // for every point in S, just check the points 15 positions away from it to compute dist between them, to see if its less than delta
+        // if closer than δ, then its the true closest pair of points (with one on left and one on right)
+        // if not closer than δ, then the closest pair is the one with distance δ 
+        // all done in linear time = run thru each point, doing constant work on all of them
+
+By the same analysis as in MergeSort, the overall running time in O(nlogn).
+    // bc of recurrence, run algo on instance of half the size, then do linear amount of work on it.

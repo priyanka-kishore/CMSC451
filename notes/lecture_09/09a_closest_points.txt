@@ -1,0 +1,21 @@
+Closest Points
+------------------------------------
+- divide and conquer!
+- computational geometry
+
+Given n points in the plane, find the closest pair.
+
+Brute force? 
+------------
+O(n^2) - compute each distance between all points, keep track of smallest
+
+Efficient?
+----------
+
+Try this simpler case: n points in a LINE
+    - we know that the closest point to a given point is either on left or right
+    - in CONSTANT time, can sort, then go thru all points and check both sides
+        - sort: O(nlogn)
+        - check: O(n)
+
+SO - can we take some idea from this 2D case into 3D case?

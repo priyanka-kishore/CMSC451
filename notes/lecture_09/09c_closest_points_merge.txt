@@ -1,0 +1,33 @@
+Closest Points: The Merge
+------------------------------------
+
+Notation:
+---------
+// so, first thing we've done is find closest pair of points on the left and right:
+- Let delta δ = min{ dist(q0*, q1*), dist(r0*, r1*) }, smallest distance between pair of points on the same side (left or right).
+    - Is this the overall minimum???
+
+- Let x* be the largest x-coord of a point in Q (left side).
+    // x* = x-coord of dividing line btw points on left and right (we'll call this vertical line L)
+- Let L be the line x = x* (vertical line).
+
+
+
+
+Claim: this closest pair of points can't be too far away from L (see next lemma).
+
+Lemma:
+------
+If there exists some point q in Q and point r in R with dist(q,r) < δ (delta), then both q and r are within distance δ (delta) of L.
+
+    Proof Idea:
+    -----------
+        L |
+          |    .r (imagine a line btw q and r for their dist δ)
+    q.    |        
+          |
+         x=x*
+
+         - q and r can't be more than δ distance away FROM LINE ll if POINTS Q AND R are separated by a distance of at most δ
+
+    => We can restrict attention to a narrow strip around L (at most δ to the left and at most δ to the right). Call this strip S, the strip of width 2δ centered on L.

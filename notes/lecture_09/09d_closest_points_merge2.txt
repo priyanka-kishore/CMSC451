@@ -1,0 +1,34 @@
+Closest Points: The Merge (cont'd)
+------------------------------------
+- divide and conquer in linear time!
+
+Lemma:
+------
+If 2 points in strip S have distance less than δ (delta), then they are within 15 positions of each other in a list of elements of S sorted by y-coord.
+    - 15? a constant
+
+    Proof:
+    -------
+    Divide the strip S into squares of size δ/2.
+            <--δ-><--δ-->
+            |     |     |
+            |_____|_____|
+            |__|__|__|__|   small square width <-> = δ/2
+            |__|__|__|__|   small square height = δ/2
+            |__|__|__|__|
+            |__|__|__|__|  
+            |     |     |  
+            |     |     |   
+                  L
+            <-----S----->
+    
+            We claim that no 2 points can be within the same square. Why?
+                - If they were, they would be on the same side of the line, and have distance <= sqrt(2)*δ/2 = δ/sqrt(2) < δ.
+                    // distance = dist of diagonal (sqrt(2)) scaled by width of square
+                - BUT this contradicts our definition of δ, which is the smallest distance between 2 points, 1 on the left of L, 1 on the right of L.
+            THIS MEANS THAT EACH SQUARE CAN ONLY HAVE 1 POINT IN IT.
+    
+    Now, suppose 2 points are 16 or more positions away in the list of points sorted by y-coord.
+    Then these points differ by at least 3 rows of boxes, so they have distances >= 3*δ/2 > δ.
+        // these points can't be closer than delta δ, so the only points we need to consider to find the closer pairs with distance less than δ, are within 15 positions of each other in the list of elements of the strip S sorted by y-coords.
+    [x].

@@ -1,0 +1,32 @@
+Using Sorting for 2D Closest Points
+------------------------------------
+Let's sort by x- and y-coordinates.
+
+Simplifying assumption:
+    - no points share their x or y coordinates
+
+Main Idea:
+    1) Recursively divide the points into left & right halves (along x-direction).
+
+    2) Find closest points on both sides.
+    
+    3) Check whether there are even closer points by taking one from the left & one from the right.
+        - unclear on how to do this check in less than quadratic time
+        - linear # points on left, and on right => num of pairs of points where one is on left and one is on right = quad
+
+        To check more quickly, somehow reduce # pairs of points to check!
+
+
+To speed things up:
+As we recurse, maintain lists sorted by both x & y coordinates.
+------------------------------------
+Notation: 
+- Input points are P = { p_1, ... , p_n}, p_i = (x_i, y_i)
+- Let Q = points in P with first ceiling(n/2) x-coords ("left")
+- Let R = points in P with last floor(n/2) x-coords ("right")
+
+Idea:
+Recursively find the closest points in Q (call them q0*, q1*) and R (call them r0*, r1*).
+
+We perform O(nlogn) initial work (for sorting) and O(n) extra work at each stage of maintaining the list.
+    - With sorted list for P, if we want corresponding lists for Q and R, we only have to select part of the list from P (no new sorting).
